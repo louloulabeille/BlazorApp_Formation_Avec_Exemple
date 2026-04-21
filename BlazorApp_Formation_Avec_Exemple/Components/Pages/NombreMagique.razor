@@ -1,0 +1,40 @@
+﻿@page "/nombre-magique"
+
+@inherits NombreMagiqueBase
+
+@rendermode InteractiveServer
+
+<PageTitle>Nombre Magique</PageTitle>
+
+<h1>Nombre Magique</h1>
+
+@if (IsGameOver)
+{
+    <h2>Perdu</h2>
+    <p>Le nombre magique était : @NbMagique <img src="lib/img/icons8-crying-face-50.png" alt="icone de perdu" /></p>
+
+    <button class="btn btn-primary" @onclick="ReinitialiserJeu">Recommencer</button>
+}
+else if (IsGameWin) {
+    <h2>Félicitations ! Vous avez trouvé le nombre magique : @NbMagique <img src="lib/img/icons8-smiling-50.png" alt="icone du gagnant" /> </h2>
+    <button class="btn btn-primary" @onclick="ReinitialiserJeu">Recommencer</button>
+}
+else 
+{
+    <h3>Devinez le nombre comprise entre 0 et 20</h3>
+
+    <div >
+        <input id="Nbmagique" type="text" @bind="EntryNbMagique" />
+        <button class="btn btn-primary" @onclick="TesterNbMagique">Tester</button>
+    </div>
+    <div>
+
+        @* affichage des vies à l'aide d'image  *@
+        @foreach (var image in Life)
+        {
+            <img src="@image" alt="Nombre de vie restante"/>
+        }
+    </div>
+}
+
+
