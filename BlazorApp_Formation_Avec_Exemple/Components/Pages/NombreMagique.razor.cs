@@ -14,13 +14,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
 
         #region private properties
         private int _nbLifeDefault = 5;
-        #endregion
-
-        #region constructeur
-        public NombreMagiqueBase() {
-            NbMagique = GenereMagicNumber();
-            InitNbLife();
-        }
+        private int _nbMax = 21;
         #endregion
 
         #region protected method
@@ -32,7 +26,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         {
             try
             {
-                if (EntryNbMagique <= 0 || EntryNbMagique > 20) {
+                if (EntryNbMagique < 0 || EntryNbMagique > 20 ) {
                     EntryNbMagique = 0;
                     return;
                 } 
@@ -50,8 +44,18 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         /// </summary>
         protected void ReinitialiserJeu()
         {
+            EntryNbMagique = 0;
             NbMagique = GenereMagicNumber();
             InitNbLife();
+        }
+
+        /// <summary>
+        /// method ovveride qui va être lancé lors de l'initialisation
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            ReinitialiserJeu();
+            base.OnInitialized();
         }
 
         #endregion
@@ -62,10 +66,10 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         /// méthode qui retourne un nombre random entre 1 & 20
         /// </summary>
         /// <returns></returns>
-        private static int GenereMagicNumber()
+        private int GenereMagicNumber()
         {
             Random random = new ();
-            return random.Next(1, 21); // Génère un nombre aléatoire entre 1 et 50
+            return random.Next(0, _nbMax); // Génère un nombre aléatoire entre 0 et 20
         }
 
         /// <summary>
