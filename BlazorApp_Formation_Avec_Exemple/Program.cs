@@ -1,5 +1,5 @@
 using BlazorApp_Formation_Avec_Exemple.Components;
-using BlazorApp_Formation_Avec_Exemple.Infrastructure;
+using BlazorApp_Formation_Avec_Exemple.Services.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
