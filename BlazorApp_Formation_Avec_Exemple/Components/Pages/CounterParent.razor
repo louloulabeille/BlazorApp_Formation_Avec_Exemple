@@ -1,0 +1,14 @@
+﻿@page "/counter"
+
+@inherits CounterParentBase
+
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+<h1>Counter</h1>
+
+<p>Saisie de la valeur intiale</p>
+<input type="number" @bind-value="InitialCount" />
+
+<Counter Value="InitialCount"></Counter>
+
