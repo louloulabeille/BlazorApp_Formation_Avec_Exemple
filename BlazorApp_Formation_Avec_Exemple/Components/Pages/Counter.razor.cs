@@ -31,7 +31,10 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         // ce qu'il faut savoir c'est que dans Blazor le constructeur on ne peut pas passer composant dans le constructeur
 
         #region method override OnInitialized ou async / sync
-
+        /// <summary>
+        /// méthod qui est appelé très tot avant meme le rendu des composants
+        /// par exemple pour faire les intialisations de data
+        /// </summary>
         protected override void OnInitialized()
         {
             Console.WriteLine("-- OnInitialized Begin --");

@@ -1,10 +1,14 @@
 using BlazorApp_Formation_Avec_Exemple.Components;
+using BlazorApp_Formation_Avec_Exemple.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// - injection de dépendance 
+builder.Services.AddSingleton<WheatherForecastService>();
 
 var app = builder.Build();
 

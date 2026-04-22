@@ -7,4 +7,8 @@
     <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorApp_Formation_Avec_Exemple.Models\BlazorApp_Formation_Avec_Exemple.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,8 @@
 ﻿@page "/weather"
+@using BlazorApp_Formation_Avec_Exemple.Data
 @attribute [StreamRendering]
+
+@* @inject WheatherForecastService ForecastService*@
 
 <PageTitle>Weather</PageTitle>
 
@@ -37,12 +40,14 @@ else
 }
 
 @code {
+    [Inject] WheatherForecastService ForecastService { get; set; }
+
     private WeatherForecast[]? forecasts;
 
     protected override async Task OnInitializedAsync()
     {
         // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
+        /*await Task.Delay(500);
 
         var startDate = DateOnly.FromDateTime(DateTime.Now);
         var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
@@ -51,14 +56,8 @@ else
             Date = startDate.AddDays(index),
             TemperatureC = Random.Shared.Next(-20, 55),
             Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
+        }).ToArray();*/
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
     }
 
-    private class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
 }
