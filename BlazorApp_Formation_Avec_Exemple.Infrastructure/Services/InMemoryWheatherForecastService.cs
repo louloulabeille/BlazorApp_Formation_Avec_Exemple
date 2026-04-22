@@ -1,8 +1,9 @@
-﻿using BlazorApp_Formation_Avec_Exemple.Models;
+﻿using BlazorApp_Formation_Avec_Exemple.Interfaces.Services;
+using BlazorApp_Formation_Avec_Exemple.Models;
 
-namespace BlazorApp_Formation_Avec_Exemple.Services.Infrastructure
+namespace BlazorApp_Formation_Avec_Exemple.Infrastructure.Services
 {
-    public class WheatherForecastService : IWheatherForecastService
+    public class InMemoryWheatherForecastService : IWheatherForecastService
     {
         public async Task<WeatherForecast[]> GetForecastAsync(DateTime now)
         {
@@ -10,12 +11,12 @@ namespace BlazorApp_Formation_Avec_Exemple.Services.Infrastructure
 
             var startDate = DateOnly.FromDateTime(now);
             var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-            WeatherForecast[] forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            WeatherForecast[] forecasts = [.. Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = startDate.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = summaries[Random.Shared.Next(summaries.Length)]
-            }).ToArray();
+            })];
 
             return forecasts;
         }

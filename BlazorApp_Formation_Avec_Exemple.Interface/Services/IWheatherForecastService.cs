@@ -1,6 +1,6 @@
 ﻿using BlazorApp_Formation_Avec_Exemple.Models;
 
-namespace BlazorApp_Formation_Avec_Exemple.Services.Infrastructure
+namespace BlazorApp_Formation_Avec_Exemple.Interfaces.Services
 {
     public interface IWheatherForecastService
     {

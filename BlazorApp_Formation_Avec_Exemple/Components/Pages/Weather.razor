@@ -39,7 +39,7 @@ else
 }
 
 @code {
-    [Inject] WheatherForecastService ForecastService { get; set; }
+    [Inject] IWheatherForecastService? ForecastService { get; set; }
 
     private WeatherForecast[]? forecasts;
 
@@ -56,7 +56,9 @@ else
             TemperatureC = Random.Shared.Next(-20, 55),
             Summary = summaries[Random.Shared.Next(summaries.Length)]
         }).ToArray();*/
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        if (ForecastService is not null)
+            forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+
     }
 
 }

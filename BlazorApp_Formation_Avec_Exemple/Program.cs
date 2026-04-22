@@ -1,5 +1,6 @@
 using BlazorApp_Formation_Avec_Exemple.Components;
-using BlazorApp_Formation_Avec_Exemple.Services.Infrastructure;
+using BlazorApp_Formation_Avec_Exemple.Infrastructure.Services;
+using BlazorApp_Formation_Avec_Exemple.Interfaces.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 // - injection de dépendance 
-builder.Services.AddSingleton<IWheatherForecastService, WheatherForecastService>();
+builder.Services.AddSingleton<IWheatherForecastService, InMemoryWheatherForecastService>();
 
 var app = builder.Build();
 
