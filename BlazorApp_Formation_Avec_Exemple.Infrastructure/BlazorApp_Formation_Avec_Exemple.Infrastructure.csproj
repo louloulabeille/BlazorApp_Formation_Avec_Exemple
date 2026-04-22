@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorApp_Formation_Avec_Exemple.Interface\BlazorApp_Formation_Avec_Exemple.Interfaces.csproj" />
+    <ProjectReference Include="..\BlazorApp_Formation_Avec_Exemple.Models\BlazorApp_Formation_Avec_Exemple.Models.csproj" />
+  </ItemGroup>
+
+</Project>

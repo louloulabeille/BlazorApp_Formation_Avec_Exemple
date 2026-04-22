@@ -1,8 +1,8 @@
 ﻿using BlazorApp_Formation_Avec_Exemple.Models;
 
-namespace BlazorApp_Formation_Avec_Exemple.Data
+namespace BlazorApp_Formation_Avec_Exemple.Infrastructure
 {
-    public class WheatherForecastService
+    public class WheatherForecastService : IWheatherForecastService
     {
         public async Task<WeatherForecast[]> GetForecastAsync(DateTime now)
         {
