@@ -53,6 +53,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
             else
                 Color = "red";
         }
+
         #endregion
 
         // ce qu'il faut savoir c'est que dans Blazor le constructeur on ne peut pas passer de composant par le constructeur

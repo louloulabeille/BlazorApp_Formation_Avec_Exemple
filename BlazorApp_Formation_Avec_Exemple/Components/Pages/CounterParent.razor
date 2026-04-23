@@ -8,7 +8,16 @@
 <h1>Counter</h1>
 
 <p>Saisie de la valeur intiale</p>
-<input type="number" @bind-value="InitialCount" />
+<!-- il est possible de l'écrire de 2 façons :event="oninput" mais a jour en temps réel la valeur lié -->
+<!-- attention avec ces events la liaison avec le serveur se fait à chaque fois lors du changement -->
+<input type="number" 
+    @bind-value="InitialCount"
+    @bind-value:event="oninput"
+    @onkeypress="KeyPress" 
+    @onkeypress:preventDefault="true"/>
+<!--<input type="number" @bind="InitialCount"
+       @bind:event="oninput" />-->
 
+<!-- affichage de l'autre fenêtre razor Counter avec sa valeur passée en paramètre -->
 <Counter Value="InitialCount"></Counter>
 

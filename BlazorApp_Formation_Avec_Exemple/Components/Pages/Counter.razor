@@ -24,7 +24,10 @@ else
     <button class="btn btn-primary"
         style="color: @(string.IsNullOrEmpty(Color) ? "white" : Color)" 
         disabled="@(CurrentCount >= 20)" 
-        @onclick="()=>CurrentCount++">Click me</button>
+        @onclick="()=>CurrentCount++"
+        @onclick:stopPropagation="true">Click me</button>
+
+        <!-- on stop la propagation de l'event onclick au parent  -->
 }
 <div>
     <BiathlonLink></BiathlonLink>
