@@ -1,0 +1,38 @@
+﻿@page "/form"
+
+@rendermode InteractiveServer
+@inherits FormBase
+
+<EditForm OnValidSubmit="Validate" Model="Client">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <InputText type="text" class="form-control" placeholder="Nom" @bind-value="Client.Name" />
+        <small>
+            <ValidationMessage For="()=>Client.Name"/>
+        </small>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <InputText type="text" class="form-control" placeholder="N°" @bind-value="Client.NumRue" />
+            <small>
+                <ValidationMessage for="()=>Client.NumRue"/>
+            </small>
+        </div>
+        <div class="col-10">
+            <InputText type="text" class="form-control" placeholder="Rue" @bind-value="Client.NomRue" />
+                <small>
+                    <ValidationMessage For="()=>Client.NomRue"/>
+                </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <InputText type="text" class="form-control" placeholder="Code postal" @bind-value="Client.CodePostal" />
+            <small>
+                <ValidationMessage For="()=>Client.CodePostal"></ValidationMessage>
+            </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Valider</button>
+</EditForm>
+
+

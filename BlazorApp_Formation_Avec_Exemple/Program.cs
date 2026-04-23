@@ -1,6 +1,7 @@
 using BlazorApp_Formation_Avec_Exemple.Components;
 using BlazorApp_Formation_Avec_Exemple.Infrastructure.Services;
 using BlazorApp_Formation_Avec_Exemple.Interfaces.Services;
+using Microsoft.AspNetCore.Components;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddRazorComponents()
 
 // - injection de dépendance 
 builder.Services.AddSingleton<IWheatherForecastService, InMemoryWheatherForecastService>();
+//builder.Services.AddTransient<NavigationManager>();
 
 var app = builder.Build();
 
