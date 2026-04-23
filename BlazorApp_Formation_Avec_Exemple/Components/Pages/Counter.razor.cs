@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
 {
@@ -13,22 +14,48 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
     /// </summary>
     public class CounterBase: ComponentBase, IDisposable // IAsyncDisposable
     {
-        protected int currentCount = 0;
+
+        #region properties protected view
+        protected int CurrentCount = 0;
         protected bool Loading { get; private set; }
+        protected string? Color { get; private set; }
+        #endregion
 
         /*[Parameter]
         public int InitialCount { get => currentCount; set => currentCount = value; }*/
 
+        #region properties passé en paramètre au niveau du lien html https://localhost:7280/Counter/5
 
         [Parameter]
         public int Value { get; set; }
+        #endregion
 
-        protected void IncrementCount()
+        #region method protected view
+        /// <summary>
+        /// method de onclick du btn d'incrementation
+        /// il est possible d'avoir de rajouter un MouseEventArgs en paramètre pour récupérer les infos de l'évènement,
+        /// comme la touche alt du clavier
+        /// </summary>
+        /// <param name="args"></param>
+        protected void IncrementCount(MouseEventArgs args)
         {
-            currentCount++;
+            if (args.AltKey) // -- si on appuie sur la touche alt du clavier, on incrémente de 2
+            {
+                CurrentCount += 2;
+            }
+            else
+            {
+                CurrentCount++;
+            }
+            
+            if (CurrentCount <= 10)
+                Color = "white";
+            else
+                Color = "red";
         }
+        #endregion
 
-        // ce qu'il faut savoir c'est que dans Blazor le constructeur on ne peut pas passer composant dans le constructeur
+        // ce qu'il faut savoir c'est que dans Blazor le constructeur on ne peut pas passer de composant par le constructeur
 
         #region method override OnInitialized ou async / sync
         /// <summary>
@@ -56,7 +83,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         protected override void OnParametersSet()
         {
             Console.WriteLine("-- OnParametersSet begin --");
-            currentCount = Value;
+            CurrentCount = Value;
             base.OnParametersSet();
             Console.WriteLine("-- OnParametersSet End --");
         }
@@ -117,6 +144,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         public void Dispose()
         {
             Console.WriteLine("Dispose");
+            GC.SuppressFinalize(this);
 ;        }
 
         /*public ValueTask DisposeAsync()
@@ -125,7 +153,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         }*/
         #endregion
 
-        #region method pverride BuildRenderTree
+        #region method override BuildRenderTree
         /// <summary>
         /// créer l'arbre de rendu des composant HTML,
         /// c'est ici que l'on peut créer dynamiquement le contenu du composant en utilisant le RenderTreeBuilder.

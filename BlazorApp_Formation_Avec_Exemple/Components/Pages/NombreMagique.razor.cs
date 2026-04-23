@@ -13,8 +13,8 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         #endregion
 
         #region private properties
-        private int _nbLifeDefault = 5;
-        private int _nbMax = 21;
+        private const int _nbLifeDefault = 5;
+        private const int _nbMax = 21;
         #endregion
 
         #region protected method
@@ -66,7 +66,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         /// méthode qui retourne un nombre random entre 1 & 20
         /// </summary>
         /// <returns></returns>
-        private int GenereMagicNumber()
+        private static int GenereMagicNumber()
         {
             Random random = new ();
             return random.Next(0, _nbMax); // Génère un nombre aléatoire entre 0 et 20

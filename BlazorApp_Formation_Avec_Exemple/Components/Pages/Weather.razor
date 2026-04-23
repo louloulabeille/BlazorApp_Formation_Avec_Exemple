@@ -1,5 +1,8 @@
 ﻿@page "/weather"
+@inherits WeatherBase
 @attribute [StreamRendering]
+
+
 
 @* @inject WheatherForecastService ForecastService*@
 
@@ -9,7 +12,7 @@
 
 <p>This component demonstrates showing data.</p>
 
-@if (forecasts == null)
+@if (Forecasts == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -25,7 +28,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var forecast in Forecasts)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -37,7 +40,7 @@ else
         </tbody>
     </table>
 }
-
+@*
 @code {
     [Inject] IWheatherForecastService? ForecastService { get; set; }
 
@@ -60,5 +63,5 @@ else
             forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
 
     }
+}*@
 
-}

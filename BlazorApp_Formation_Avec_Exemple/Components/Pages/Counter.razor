@@ -18,9 +18,13 @@ else
 {
     <!-- <h1>Counter</h1>-->
 
-    <p role="status">Current count: @currentCount</p>
-
-    <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+    <p role="status">Current count: @CurrentCount</p>
+    <!-- il est possible de faire des methods lambda -->
+    @*@onclick="IncrementCount">Click me</button>*@
+    <button class="btn btn-primary"
+        style="color: @(string.IsNullOrEmpty(Color) ? "white" : Color)" 
+        disabled="@(CurrentCount >= 20)" 
+        @onclick="()=>CurrentCount++">Click me</button>
 }
 <div>
     <BiathlonLink></BiathlonLink>
