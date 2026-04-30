@@ -39,12 +39,24 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
 
 
         #region private method
+        /// <summary>
+        /// initialisation des data à afficher
+        /// </summary>
+        /// <returns></returns>
         private async Task InitializeForecasts()
         {
             // -- appel de la class par injection pour retourner les datas
+            _ = Task.Delay(5000).ContinueWith(async _ =>
+            {
+                if (WheatherForecastService is not null)
+                {
+                    Forecasts = await WheatherForecastService.GetForecastAsync(DateSaisie);
+                    // - rafraichi la page
+                    await this.InvokeAsync(StateHasChanged);
+                }
+                    
+            });
 
-            if (WheatherForecastService is not null)
-                Forecasts = await WheatherForecastService.GetForecastAsync(DateSaisie);
         }
         #endregion
     }
