@@ -2,7 +2,7 @@
 
 namespace BlazorApp_Formation_Avec_Exemple.Components.Layout
 {
-    public class LoaderBase : ComponentBase
+    public class LoaderBase : ComponentBase, IDisposable
     {
         #region public properties parameter
         // - pour faire passer du code html directement en parametre
@@ -15,8 +15,17 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Layout
 
         #region protected properties view
         protected bool ShowLoaderMessage { get; set; } = false;
+        // - token pour annuler le timer si le composant est détruit avant la fin du timer
+        protected CancellationTokenSource Cts { get; set; } = new();
         #endregion
 
+        #region method IDisposable
+        public void Dispose()
+        {
+            Cts.Dispose();
+            GC.SuppressFinalize(this);
+        }
+        #endregion
 
         #region protected override method
         /// <summary>
@@ -28,7 +37,8 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Layout
         {
             if (firstRender)
             {
-                _ = Task.Delay(DelayInt).ContinueWith(async _ => {
+                // - ne pas oublier le token
+                _ = Task.Delay(DelayInt, Cts.Token).ContinueWith(async _ => {
                     ShowLoaderMessage = true;
                     await this.InvokeAsync(StateHasChanged);
                 });
