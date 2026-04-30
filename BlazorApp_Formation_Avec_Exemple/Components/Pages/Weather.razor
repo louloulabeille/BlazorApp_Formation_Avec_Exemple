@@ -14,17 +14,18 @@
 <p>This component demonstrates showing data.</p>
 
 <input type="date" placeholder="jj/mm/aaaa" 
-    @bind-value="DateSaisie" 
-    @bind-value:event="oninput" 
+    @bind-value="DateSaisie" />
+    @*
+    @bind-value:event="oninput"
     @onchange="DateClicked" 
-    @onchange:stopPropagation="true"/>  <!-- pour éviter la propagation de l'event onchange au parent sinon si le parent a un onchange il va se produire aussi etc -->
+    @onchange:stopPropagation="true"/> *@ <!-- pour éviter la propagation de l'event onchange au parent sinon si le parent a un onchange il va se produire aussi etc -->
 
+<button class="btn btn-primary" @onclick="DateClicked">Rafraichir</button>
 <!-- en mettant un format le systeme ne marche pas quand on l'initialise à une date donnée -->
 @*
 @bind-value:format="dd/MM/yyyy"/>
 *@
 <!--<button @onclick="DateClicked" class="btn btn-primary">Rafraichir</button>-->
-
 @if (Forecasts == null)
 {
     <!--<p><em>Loading...</em></p>-->
@@ -33,7 +34,8 @@
 else
 {
     <TableWeatherCasts @bind-Forecasts="Forecasts"></TableWeatherCasts>
-    @* <table class="table">
+    @* 
+    <table class="table">
         <thead>
             <tr>
                 <th>Date</th>
@@ -53,7 +55,8 @@ else
                 </tr>
             }
         </tbody>
-    </table> *@
+    </table> 
+    *@
 }
 @*
 @code {
