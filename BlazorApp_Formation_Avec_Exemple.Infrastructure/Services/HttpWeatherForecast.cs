@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace BlazorApp_Formation_Avec_Exemple.Infrastructure.Services
 {
-    public class HttpWeatherForecast : IWheatherForecastService
+    public class HttpWeatherForecastService : IWheatherForecastService
     {
         #region private properties
         private readonly HttpClient _httpClient;
@@ -18,7 +18,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Infrastructure.Services
         #endregion
 
         #region constructeur
-        public HttpWeatherForecast(IConfiguration configuration)
+        public HttpWeatherForecastService(IConfiguration configuration)
         {
             _httpClient = new HttpClient()
             {

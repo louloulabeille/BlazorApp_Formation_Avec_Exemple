@@ -12,7 +12,7 @@ builder.Services.AddRazorComponents()
 
 // - injection de dépendance 
 //builder.Services.AddSingleton<IWheatherForecastService, InMemoryWheatherForecastService>();
-builder.Services.AddSingleton<IWheatherForecastService, HttpWeatherForecast>();
+builder.Services.AddScoped<IWheatherForecastService, HttpWeatherForecastService>();
 //builder.Services.AddTransient<NavigationManager>();
 
 var app = builder.Build();
