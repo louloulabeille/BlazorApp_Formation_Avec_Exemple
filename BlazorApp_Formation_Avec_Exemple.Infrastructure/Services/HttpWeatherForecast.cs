@@ -36,7 +36,8 @@ namespace BlazorApp_Formation_Avec_Exemple.Infrastructure.Services
         {
             try
             {
-                using var result = await _httpClient.GetAsync("WeatherForecast");
+                
+                using var result = await _httpClient.GetAsync("WeatherForecast?date="+now.ToString("yyyy-MM-dd"));
                 result.EnsureSuccessStatusCode();
 
                 if (result.IsSuccessStatusCode)

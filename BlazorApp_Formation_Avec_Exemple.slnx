@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="../WebApi-Blazor-Pizza/WebApi-Blazor-Pizza/WebApi-Blazor-Pizza.csproj" />
   <Project Path="BlazorApp_Formation_Avec_Exemple.Infrastructure/BlazorApp_Formation_Avec_Exemple.Infrastructure.csproj" Id="18e1e164-dedc-45af-b4d0-a83d4489aa56" />
   <Project Path="BlazorApp_Formation_Avec_Exemple.Interface/BlazorApp_Formation_Avec_Exemple.Interfaces.csproj" Id="72a878a7-9cd1-4278-a68b-1d24221faa44" />
   <Project Path="BlazorApp_Formation_Avec_Exemple.Models/BlazorApp_Formation_Avec_Exemple.Models.csproj" Id="7ee6b803-f7a6-4dcc-9d2f-446272a14a46" />
