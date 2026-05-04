@@ -55,7 +55,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
         private async Task InitializeForecasts()
         {
             // -- appel de la class par injection pour retourner les datas
-            await Task.Delay(5000);
+            //await Task.Delay(5000);
             if (WheatherForecastService is not null)
             {
                 Forecasts = await WheatherForecastService.GetForecastAsync(DateSaisie);
