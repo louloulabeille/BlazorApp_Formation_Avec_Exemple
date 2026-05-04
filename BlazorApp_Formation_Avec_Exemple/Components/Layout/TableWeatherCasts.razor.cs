@@ -13,7 +13,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Layout
 
         #region public properties
         [Parameter]
-        public WeatherForecast[]? Forecasts { get; set; }
+        public WeatherForecast[]? Forecasts { get; set; } = null;
         #endregion
 
         #region public properties parameter
@@ -23,7 +23,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Layout
         #endregion
 
         #region protected method view
-        protected void Clear()
+        protected void OnClickClear()
         {
             Forecasts = null;
             ForecastsChanged.InvokeAsync(Forecasts); // - method qui repasse la data vers le parent
