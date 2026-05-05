@@ -2,7 +2,9 @@
 @inherits WeatherBase
 @attribute [StreamRendering]
 
-@rendermode InteractiveServer
+@*@rendermode InteractiveServer *@
+@* - désactive le pre-rendu de la page - *@
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 
 @* @inject WheatherForecastService ForecastService*@

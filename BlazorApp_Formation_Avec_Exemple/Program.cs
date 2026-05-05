@@ -1,4 +1,6 @@
 using BlazorApp_Formation_Avec_Exemple.Components;
+using BlazorApp_Formation_Avec_Exemple.Components.Infrastructure.Configuration;
+using BlazorApp_Formation_Avec_Exemple.Components.Infrastructure.ExtendsMethod;
 using BlazorApp_Formation_Avec_Exemple.Infrastructure.Services;
 using BlazorApp_Formation_Avec_Exemple.Interfaces.Services;
 using Microsoft.AspNetCore.Components;
@@ -10,9 +12,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// -- mise en place de Ioption dans .netcore
+/*builder.Services.AddOptions();
+builder.Services.Configure<UrlApi>(builder.Configuration.GetSection("Api")); // - configuration de option à partir de */
+builder.Services.AddOptionsConfigure(builder.Configuration);
+
 // - injection de dépendance 
 //builder.Services.AddSingleton<IWheatherForecastService, InMemoryWheatherForecastService>();
-builder.Services.AddScoped<IWheatherForecastService, HttpWeatherForecastService>();
+
+// -- injection de dépendance HttpClient passé en paramètre de la classe HttpWeatherForecastService
+builder.Services.AddHttpClientExtends();
+/*builder.Services.AddHttpClient<IWheatherForecastService, HttpWeatherForecastService>((ServiceProvider, client)=> {
+    client.BaseAddress = new Uri(builder.Configuration["Api:Url"]??"");
+});*/
 //builder.Services.AddTransient<NavigationManager>();
 
 var app = builder.Build();

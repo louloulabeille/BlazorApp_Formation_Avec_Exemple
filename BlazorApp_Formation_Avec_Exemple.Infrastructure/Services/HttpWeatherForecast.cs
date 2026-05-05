@@ -8,23 +8,13 @@ using System.Text.Json;
 
 namespace BlazorApp_Formation_Avec_Exemple.Infrastructure.Services
 {
-    public class HttpWeatherForecastService : IWheatherForecastService
+    public class HttpWeatherForecastService(HttpClient client) : IWheatherForecastService
     {
         #region private properties
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClient = client;
         private readonly JsonSerializerOptions _options = new() {
             PropertyNameCaseInsensitive = true,
         };
-        #endregion
-
-        #region constructeur
-        public HttpWeatherForecastService(IConfiguration configuration)
-        {
-            _httpClient = new HttpClient()
-            {
-                BaseAddress = new Uri(configuration.GetSection("AdresseApi").Value?? "https://localhost:7066"),
-            };
-        }
         #endregion
 
         /// <summary>
@@ -36,7 +26,6 @@ namespace BlazorApp_Formation_Avec_Exemple.Infrastructure.Services
         {
             try
             {
-                
                 using var result = await _httpClient.GetAsync("WeatherForecast?date="+now.ToString("yyyy-MM-dd"));
                 result.EnsureSuccessStatusCode();
 
