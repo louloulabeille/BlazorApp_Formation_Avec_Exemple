@@ -1,4 +1,4 @@
-﻿using BlazorApp_Formation_Avec_Exemple.Components.Infrastructure.Configuration;
+﻿using BBlazorApp_Formation_Avec_Exemple.Models.Configuration;
 
 namespace BlazorApp_Formation_Avec_Exemple.Components.Infrastructure.ExtendsMethod
 {

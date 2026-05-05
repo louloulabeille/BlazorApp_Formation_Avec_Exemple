@@ -1,5 +1,4 @@
 using BlazorApp_Formation_Avec_Exemple.Components;
-using BlazorApp_Formation_Avec_Exemple.Components.Infrastructure.Configuration;
 using BlazorApp_Formation_Avec_Exemple.Components.Infrastructure.ExtendsMethod;
 using BlazorApp_Formation_Avec_Exemple.Infrastructure.Services;
 using BlazorApp_Formation_Avec_Exemple.Interfaces.Services;

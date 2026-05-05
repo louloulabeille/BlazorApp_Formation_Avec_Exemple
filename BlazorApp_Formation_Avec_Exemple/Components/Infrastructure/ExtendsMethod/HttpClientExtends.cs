@@ -1,4 +1,4 @@
-﻿using BlazorApp_Formation_Avec_Exemple.Components.Infrastructure.Configuration;
+﻿using BBlazorApp_Formation_Avec_Exemple.Models.Configuration;
 using BlazorApp_Formation_Avec_Exemple.Infrastructure.Services;
 using BlazorApp_Formation_Avec_Exemple.Interfaces.Services;
 using Microsoft.Extensions.Options;
