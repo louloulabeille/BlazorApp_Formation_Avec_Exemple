@@ -3,6 +3,7 @@ using BlazorApp_Formation_Avec_Exemple.Components.Infrastructure.ExtendsMethod;
 using BlazorApp_Formation_Avec_Exemple.Infrastructure.Services;
 using BlazorApp_Formation_Avec_Exemple.Interfaces.Services;
 using Microsoft.AspNetCore.Components;
+using Polly;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,10 +22,9 @@ builder.Services.AddOptionsConfigure(builder.Configuration);
 
 // -- injection de dépendance HttpClient passé en paramètre de la classe HttpWeatherForecastService
 builder.Services.AddHttpClientExtends();
-/*builder.Services.AddHttpClient<IWheatherForecastService, HttpWeatherForecastService>((ServiceProvider, client)=> {
-    client.BaseAddress = new Uri(builder.Configuration["Api:Url"]??"");
-});*/
+
 //builder.Services.AddTransient<NavigationManager>();
+
 
 var app = builder.Build();
 
