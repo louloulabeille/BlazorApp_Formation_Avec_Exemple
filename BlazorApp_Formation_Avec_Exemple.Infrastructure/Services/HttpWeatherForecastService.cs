@@ -32,7 +32,7 @@ namespace BlazorApp_Formation_Avec_Exemple.Infrastructure.Services
             try
             {
                 //int retry = 0;
-                var result = await _httpClient.GetAsync("WeatherForecast?date="+now.ToString("yyyy-MM-dd"));
+                using var result = await _httpClient.GetAsync("WeatherForecast?date="+now.ToString("yyyy-MM-dd"));
                 //result.EnsureSuccessStatusCode(); // -- leve une exception si la réponse Http est false
 
                 /*while (!result.IsSuccessStatusCode && retry < _options.Value.MaxRetries)

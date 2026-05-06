@@ -19,5 +19,6 @@
        @bind:event="oninput" />-->
 
 <!-- affichage de l'autre fenêtre razor Counter avec sa valeur passée en paramètre -->
-<Counter Value="InitialCount"></Counter>
-
+<CascadingValue Value="InitialCount" Name="Count">
+    <Counter ></Counter>
+</CascadingValue>
