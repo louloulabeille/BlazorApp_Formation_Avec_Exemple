@@ -23,7 +23,6 @@ namespace BlazorApp_Formation_Avec_Exemple.Components.Pages
 
         /*[Parameter]
         public int InitialCount { get => currentCount; set => currentCount = value; }*/
-
         #region properties passé en paramètre au niveau du lien html https://localhost:7280/Counter/5
 
         [CascadingParameter(Name ="Count")]
